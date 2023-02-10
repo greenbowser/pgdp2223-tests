@@ -32,7 +32,7 @@ public class BasicGameTest
         PinguGame c = new PinguGame(true, 420, 0);
         c.play();
 
-        String expectedString = Files.readString(expected.toPath());
+        String expectedString = Files.readString(expected.toPath()).replaceAll("\r", "");
         String actualString = Files.readString(actual.toPath()).replaceAll("\r", "");
         Assertions.assertEquals(expectedString, actualString);
     }
@@ -51,7 +51,7 @@ public class BasicGameTest
         PinguGame c = new PinguGame(true, 420, 0);
         c.play();
 
-        String expectedString = Files.readString(expected.toPath());
+        String expectedString = Files.readString(expected.toPath()).replaceAll("\r", "");
         String actualString = Files.readString(actual.toPath()).replaceAll("\r", "");
         Assertions.assertEquals(expectedString, actualString);
     }
@@ -70,7 +70,7 @@ public class BasicGameTest
         PinguGame c = new PinguGame(true, 42069, 0);
         c.play();
 
-        String expectedString = Files.readString(expected.toPath());
+        String expectedString = Files.readString(expected.toPath()).replaceAll("\r", "");
         String actualString = Files.readString(actual.toPath()).replaceAll("\r", "");
         Assertions.assertEquals(expectedString, actualString);
     }
@@ -90,7 +90,7 @@ public class BasicGameTest
         System.setIn(in);
         PinguGame c = new PinguGame(true, 420, 5);
         c.play();
-        String expectedString = Files.readString(expected.toPath());
+        String expectedString = Files.readString(expected.toPath()).replaceAll("\r", "");
         String actualString = Files.readString(actual.toPath()).replaceAll("\r", "");
         Assertions.assertEquals(expectedString, actualString);
     }
@@ -115,13 +115,13 @@ public class BasicGameTest
         List<Integer> diceRolls = new ArrayList<>();
         for (int i = 0; i < 1000; i++)
         {
-            diceRolls.add(i%7);
+            diceRolls.add((i%6)+1);
         }
 
         System.setIn(new GameInputStream(stringInput));
         PinguGame c = new SpecificPinguGame(diceRolls);
         c.play();
-        String expectedString = Files.readString(expected.toPath());
+        String expectedString = Files.readString(expected.toPath()).replaceAll("\r", "");
         String actualString = Files.readString(actual.toPath()).replaceAll("\r", "");
         Assertions.assertEquals(expectedString, actualString);
     }
